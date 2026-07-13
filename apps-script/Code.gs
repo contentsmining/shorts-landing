@@ -61,13 +61,13 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function emailShell(innerHtml) {
+function emailShell(innerHtml, headerLabel) {
   return `
   <div style="background:#f4f4f5;padding:40px 16px;font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;">
     <table role="presentation" width="100%" style="max-width:520px;margin:0 auto;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #eee;">
       <tr>
         <td style="background:#000000;padding:28px 32px;">
-          <span style="font-size:20px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">콘텐츠마이닝</span>
+          <span style="font-size:20px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">${headerLabel || '콘텐츠마이닝'}</span>
         </td>
       </tr>
       <tr>
@@ -139,7 +139,7 @@ function notifyAdmin(data, timestamp) {
   `;
 
   GmailApp.sendEmail(ADMIN_EMAIL, subject, stripHtml(inner), {
-    htmlBody: emailShell(inner),
+    htmlBody: emailShell(inner, '콘텐츠마이닝 - 쇼츠 랜딩페이지'),
   });
 }
 
