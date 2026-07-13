@@ -49,10 +49,10 @@ function App() {
             className="mx-auto h-36 w-auto rounded-full bg-white/5 p-4 shadow-[0_40px_100px_rgba(255,79,139,0.18)]"
           />
           <h1 className="mt-8 text-3xl font-black tracking-tight text-white sm:text-4xl">
-            콘텐츠마이닝 레퍼런스 모음
+            레퍼런스 모음
           </h1>
           <p className="mt-2 text-lg text-white/70 sm:text-xl">
-            - 원고료 30-40만원 추천모델 편 -
+            - 원고료 30-40만원 기준 -
           </p>
         </header>
 

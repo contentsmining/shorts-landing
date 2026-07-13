@@ -1,6 +1,6 @@
 // ===== 설정값: 아래 3개를 채워 넣으세요 =====
 const DISCORD_WEBHOOK_URL = 'PASTE_YOUR_DISCORD_WEBHOOK_URL_HERE';
-const ADMIN_EMAIL = 'hello@contentsmining.com';
+const ADMIN_EMAILS = ['one@contentsmining.com', 'shm@contentsmining.com'];
 const SHEET_NAME = '시트1'; // 실제 시트(탭) 이름으로 변경
 
 const BRAND_COLOR = '#FF6019';
@@ -138,7 +138,7 @@ function notifyAdmin(data, timestamp) {
     </table>
   `;
 
-  GmailApp.sendEmail(ADMIN_EMAIL, subject, stripHtml(inner), {
+  GmailApp.sendEmail(ADMIN_EMAILS.join(','), subject, stripHtml(inner), {
     htmlBody: emailShell(inner, '콘텐츠마이닝 - 쇼츠 랜딩페이지'),
   });
 }

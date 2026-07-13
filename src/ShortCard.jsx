@@ -148,10 +148,10 @@ function ShortCard({ card }) {
         rel="noreferrer"
         className="block px-4 py-3 text-white transition-colors hover:text-pink-200"
       >
-        <p className="text-base font-semibold uppercase tracking-[0.2em] text-pink-300">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white">
           {card.subtitle}
         </p>
-        <p className="mt-1 text-xl font-bold">{card.title}</p>
+        <p className="mt-0 text-base font-bold">{card.title}</p>
       </a>
     </div>
   );
