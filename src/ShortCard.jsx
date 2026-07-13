@@ -72,7 +72,6 @@ function ShortCard({ card }) {
           onReady: (event) => {
             event.target.mute();
             event.target.playVideo();
-            setIsReady(true);
 
             progressTimerRef.current = window.setInterval(() => {
               const player = playerRef.current;
@@ -86,6 +85,10 @@ function ShortCard({ card }) {
           },
           onStateChange: (event) => {
             const state = event.data;
+            if (state === window.YT.PlayerState.PLAYING) {
+              setIsReady(true);
+              return;
+            }
             if (
               state === window.YT.PlayerState.CUED ||
               state === window.YT.PlayerState.PAUSED ||
