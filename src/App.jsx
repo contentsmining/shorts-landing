@@ -41,7 +41,7 @@ const cards = rawEntries.map((entry, idx) => {
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-8xl px-4 pb-24 pt-32 sm:px-6 sm:pt-40 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 pb-24 pt-32 sm:px-6 sm:pt-40 lg:px-8">
         <header className="mb-24 text-center">
           <img
             src={logoUrl}
