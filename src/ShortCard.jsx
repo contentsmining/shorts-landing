@@ -18,20 +18,42 @@ function loadYoutubeApi() {
   return apiPromise;
 }
 
+const MAX_CONCURRENT_PLAYERS = 10;
+let activePlayerCount = 0;
+
 function ShortCard({ card }) {
+  const containerRef = useRef(null);
   const playerElRef = useRef(null);
   const playerRef = useRef(null);
   const progressTimerRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (!card.videoId) return undefined;
+    const el = containerRef.current;
+    if (!el) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: '200px 0px', threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || !card.videoId || playerRef.current) return undefined;
+    if (activePlayerCount >= MAX_CONCURRENT_PLAYERS) return undefined;
 
     let cancelled = false;
+    activePlayerCount += 1;
 
     loadYoutubeApi().then((YT) => {
-      if (cancelled || !playerElRef.current) return;
+      if (cancelled || !playerElRef.current) {
+        activePlayerCount -= 1;
+        return;
+      }
 
       playerRef.current = new YT.Player(playerElRef.current, {
         videoId: card.videoId,
@@ -44,6 +66,7 @@ function ShortCard({ card }) {
           playlist: card.videoId,
           modestbranding: 1,
           rel: 0,
+          origin: window.location.origin,
         },
         events: {
           onReady: (event) => {
@@ -61,6 +84,17 @@ function ShortCard({ card }) {
               }
             }, 200);
           },
+          onStateChange: (event) => {
+            const state = event.data;
+            if (
+              state === window.YT.PlayerState.CUED ||
+              state === window.YT.PlayerState.PAUSED ||
+              state === window.YT.PlayerState.UNSTARTED
+            ) {
+              event.target.mute();
+              event.target.playVideo();
+            }
+          },
         },
       });
     });
@@ -71,14 +105,22 @@ function ShortCard({ card }) {
         window.clearInterval(progressTimerRef.current);
         progressTimerRef.current = null;
       }
-      playerRef.current?.destroy?.();
-      playerRef.current = null;
+      if (playerRef.current) {
+        playerRef.current.destroy?.();
+        playerRef.current = null;
+        activePlayerCount -= 1;
+      }
+      setIsReady(false);
+      setProgress(0);
     };
-  }, [card.videoId]);
+  }, [isVisible, card.videoId]);
 
   return (
-    <div className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-card backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-pink-500/30">
-      <div className="relative aspect-[10/16] overflow-hidden bg-slate-900">
+    <div
+      ref={containerRef}
+      className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-card backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-pink-500/30"
+    >
+      <div className="relative aspect-[9/16] overflow-hidden bg-slate-900">
         <img
           src={card.image}
           alt={card.title}
@@ -87,14 +129,15 @@ function ShortCard({ card }) {
           }`}
         />
         <div
-          ref={playerElRef}
-          className={`pointer-events-none absolute inset-0 h-full w-full scale-[1.4] ${
+          className={`pointer-events-none absolute inset-0 scale-[1.4] [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:h-full [&_iframe]:w-full ${
             isReady ? 'opacity-100' : 'opacity-0'
           }`}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-white/15">
+        >
+          <div ref={playerElRef} className="h-full w-full" />
+        </div>
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-white/10">
           <div
-            className="h-full bg-pink-400 transition-[width] duration-150 ease-linear"
+            className="h-full bg-white/40 transition-[width] duration-150 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>

@@ -200,14 +200,23 @@ function ContactForm() {
           </button>
 
           {status === 'success' && (
-            <p className="mt-4 text-center text-sm font-medium text-[#FF6019]">
-              문의가 정상적으로 접수되었습니다. 빠르게 답변드릴게요!
-            </p>
+            <div className="mt-8 rounded-2xl border border-[#FF6019]/30 bg-[#FF6019]/10 px-6 py-8 text-center">
+              <p className="text-3xl">🎉</p>
+              <p className="mt-3 text-xl font-black text-[#FF6019] sm:text-2xl">
+                문의가 정상적으로 접수되었습니다!
+              </p>
+              <p className="mt-2 text-sm text-slate-500 sm:text-base">
+                입력하신 이메일로 접수 확인 메일을 보내드렸어요.
+                <br />
+                담당자가 확인 후 빠르게 연락드리겠습니다.
+              </p>
+            </div>
           )}
           {status === 'error' && (
-            <p className="mt-4 text-center text-sm font-medium text-red-500">
-              전송 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.
-            </p>
+            <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 px-6 py-6 text-center">
+              <p className="text-lg font-bold text-red-500">전송 중 문제가 발생했습니다</p>
+              <p className="mt-1 text-sm text-slate-500">잠시 후 다시 시도해주세요.</p>
+            </div>
           )}
         </form>
       </div>
