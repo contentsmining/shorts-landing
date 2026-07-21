@@ -33,7 +33,7 @@ function ShortCard({ card }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { rootMargin: '200px 0px', threshold: 0.1 }
+      { rootMargin: '50px 0px', threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -75,7 +75,14 @@ function ShortCard({ card }) {
               if (duration > 0) {
                 setProgress(Math.min(100, (current / duration) * 100));
               }
-            }, 200);
+              if (
+                typeof player.getPlayerState === 'function' &&
+                player.getPlayerState() !== window.YT.PlayerState.PLAYING
+              ) {
+                player.mute();
+                player.playVideo();
+              }
+            }, 500);
           },
           onStateChange: (event) => {
             const state = event.data;
