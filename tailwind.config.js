@@ -15,6 +15,16 @@ export default {
           dark: '#c30f6d',
         },
       },
+      animation: {
+        'ring-slow': 'ring-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+      },
+      keyframes: {
+        'ring-slow': {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '80%': { opacity: '0.15' },
+          '100%': { transform: 'scale(1.7)', opacity: '0' },
+        },
+      },
     },
   },
   plugins: [],

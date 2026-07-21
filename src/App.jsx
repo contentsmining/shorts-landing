@@ -25,6 +25,9 @@ const rawEntries = [
   { brand: '노에트', category: '뷰티', href: 'https://youtube.com/shorts/iQ9tpEHZjtU?feature=share' },
   { brand: '듀이트리', category: '뷰티', href: 'https://youtube.com/shorts/j_JSyvtDP-g?feature=share' },
   { brand: '듀이트리', category: '뷰티', href: 'https://youtube.com/shorts/Ri8m9Dcbj6k?feature=share' },
+  { brand: '듀이트리', category: '이벤트', href: 'https://youtube.com/shorts/nBCgkKG20xg?feature=share' },
+  { brand: '듀이트리', category: '이벤트', href: 'https://youtube.com/shorts/T3EkhI042xE?feature=share' },
+  { brand: '듀이트리', category: '이벤트', href: 'https://youtube.com/shorts/IpJUJ5S6lXU?feature=share' },
   { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/pkWyGEBQGSM?feature=share' },
   { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/j5oQnre7LgI?feature=share' },
   { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/QGVjUADTsgU?feature=share' },
@@ -137,6 +140,17 @@ function App() {
       </div>
 
       <ContactForm />
+
+      <a
+        href="#contact"
+        className="group fixed bottom-6 right-6 z-50 flex h-20 w-20 items-center justify-center"
+      >
+        <span className="absolute inset-0 animate-ring-slow rounded-full border-2 border-[#FF6019]" />
+        <span className="relative flex h-20 w-20 flex-col items-center justify-center rounded-full bg-[#FF6019] text-center text-lg font-medium leading-tight text-white shadow-[0_12px_32px_rgba(255,96,25,0.5)] ring-1 ring-white/20 transition-transform duration-200 group-hover:scale-110 group-hover:shadow-[0_16px_40px_rgba(255,96,25,0.6)] group-active:scale-95">
+          <span>제작</span>
+          <span>문의</span>
+        </span>
+      </a>
     </div>
   );
 }

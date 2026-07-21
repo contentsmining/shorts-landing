@@ -61,7 +61,7 @@ function ContactForm() {
   };
 
   return (
-    <section className="bg-white text-slate-900">
+    <section id="contact" className="bg-white text-slate-900">
       <div className="mx-auto max-w-2xl px-6 py-24 sm:px-8">
         <h2 className="text-5xl font-black tracking-tight sm:text-6xl">
           Contact<span className="text-[#FF6019]">.</span>
