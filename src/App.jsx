@@ -109,7 +109,7 @@ function App() {
           <img
             src={logoUrl}
             alt="콘텐츠마이닝 로고"
-            className="mx-auto h-36 w-auto rounded-full bg-white/5 p-4 shadow-[0_40px_100px_rgba(255,79,139,0.18)]"
+            className="mx-auto h-24 w-auto drop-shadow-[0_20px_60px_rgba(255,79,139,0.25)] sm:h-28"
           />
           <h1 className="mt-8 text-3xl font-black tracking-tight text-white sm:text-4xl">
             레퍼런스 모음
