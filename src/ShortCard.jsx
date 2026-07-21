@@ -18,9 +18,6 @@ function loadYoutubeApi() {
   return apiPromise;
 }
 
-const MAX_CONCURRENT_PLAYERS = 10;
-let activePlayerCount = 0;
-
 function ShortCard({ card }) {
   const containerRef = useRef(null);
   const playerElRef = useRef(null);
@@ -44,14 +41,11 @@ function ShortCard({ card }) {
 
   useEffect(() => {
     if (!isVisible || !card.videoId || playerRef.current) return undefined;
-    if (activePlayerCount >= MAX_CONCURRENT_PLAYERS) return undefined;
 
     let cancelled = false;
-    activePlayerCount += 1;
 
     loadYoutubeApi().then((YT) => {
       if (cancelled || !playerElRef.current) {
-        activePlayerCount -= 1;
         return;
       }
 
@@ -111,7 +105,6 @@ function ShortCard({ card }) {
       if (playerRef.current) {
         playerRef.current.destroy?.();
         playerRef.current = null;
-        activePlayerCount -= 1;
       }
       setIsReady(false);
       setProgress(0);
