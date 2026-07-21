@@ -3,30 +3,90 @@ import ShortCard from './ShortCard.jsx';
 import ContactForm from './ContactForm.jsx';
 
 const rawEntries = [
-  { brand: '부케가르니', category: '생활용품', href: 'https://youtube.com/shorts/vAL-CT4P_eE?feature=share' },
-  { brand: '부케가르니', category: '생활용품', href: 'https://youtube.com/shorts/ZZsADDq3Ek8?feature=share' },
-  { brand: '부케가르니', category: '생활용품', href: 'https://youtube.com/shorts/q2IGyaFIUCI?feature=share' },
-  { brand: '붐케어', category: '육아용품', href: 'https://youtube.com/shorts/FCJAGeJCwas?feature=share' },
-  { brand: '붐케어', category: '육아용품', href: 'https://youtube.com/shorts/7JjBrrekqzo?feature=share' },
-  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/vTqzOK1eRSs?feature=share' },
-  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/5WJUBiN0GsA?feature=share' },
-  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/w6B3pJBwpz4?feature=share' },
-  { brand: '플라이밀', category: '다이어트 쉐이크', href: 'https://youtube.com/shorts/lOprFkCDiDU?feature=share' },
-  { brand: '플라이밀', category: '다이어트 쉐이크', href: 'https://youtube.com/shorts/bGIxfRGgf2I?feature=share' },
-  { brand: '플라이밀', category: '다이어트 쉐이크', href: 'https://youtube.com/shorts/yyT-QQ39Gl4?feature=share' },
-  { brand: '플라이밀', category: '다이어트 쉐이크', href: 'https://youtube.com/shorts/y1_1qJUVQP8?feature=share' },
-  { brand: '플라이밀', category: '다이어트 쉐이크', href: 'https://youtube.com/shorts/etTBVaGK5Yk?feature=share' },
-  { brand: '딘토', category: '색조', href: 'https://youtube.com/shorts/pGeRad-_ICo?feature=share' },
-  { brand: '딘토', category: '색조', href: 'https://youtube.com/shorts/VyK5gyy0gSU?feature=share' },
-  { brand: 'SNP', category: '기초제품', href: 'https://youtube.com/shorts/R7mWCVVfd-I?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/02e4PhNLCE8?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/MjtvqCeCV-E?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/ru0_N3j2Bdc?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/kZtbyFyuCvc?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/dFL_Xza1aNs?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/XmL96SdUzug?feature=share' },
+  { brand: '아토팜', category: '유아 스킨케어', href: 'https://youtube.com/shorts/WQcN_-Npcuw?feature=share' },
+  { brand: '붐케어', category: '육아용품', href: 'https://youtube.com/shorts/u3-iRrEFb3o?feature=share' },
+  { brand: '붐케어', category: '육아용품', href: 'https://youtube.com/shorts/sm93GgyXrNw?feature=share' },
+  { brand: '단양문화원', category: '관광', href: 'https://youtube.com/shorts/ZWmm2023CMs?feature=share' },
+  { brand: '단양문화원', category: '관광', href: 'https://youtube.com/shorts/gjugWBcFy8g?feature=share' },
+  { brand: '단양문화원', category: '관광', href: 'https://youtube.com/shorts/3VXpEL7jK6o?feature=share' },
+  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/eljB644ZGHQ?feature=share' },
+  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/rE_Fb2FehTI?feature=share' },
+  { brand: '에어로케이', category: '여행', href: 'https://youtube.com/shorts/UAPlyfK0Er4?feature=share' },
+  { brand: '밤켈', category: '캐리어', href: 'https://youtube.com/shorts/GctO8EeIBbE?feature=share' },
+  { brand: '밤켈', category: '캐리어', href: 'https://youtube.com/shorts/93nDMfrmnF4?feature=share' },
+  { brand: '밤켈', category: '캐리어', href: 'https://youtube.com/shorts/2YWPrIIYtvU?feature=share' },
+  { brand: '노에트', category: '뷰티', href: 'https://youtube.com/shorts/iTAMgpOGga0?feature=share' },
+  { brand: '노에트', category: '뷰티', href: 'https://youtube.com/shorts/iQ9tpEHZjtU?feature=share' },
+  { brand: '듀이트리', category: '뷰티', href: 'https://youtube.com/shorts/j_JSyvtDP-g?feature=share' },
+  { brand: '듀이트리', category: '뷰티', href: 'https://youtube.com/shorts/Ri8m9Dcbj6k?feature=share' },
+  { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/pkWyGEBQGSM?feature=share' },
+  { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/j5oQnre7LgI?feature=share' },
+  { brand: 'SNP', category: '뷰티', href: 'https://youtube.com/shorts/QGVjUADTsgU?feature=share' },
+  { brand: '딘토', category: '뷰티', href: 'https://youtube.com/shorts/A6CvhTP925I?feature=share' },
+  { brand: '딘토', category: '뷰티', href: 'https://youtube.com/shorts/XhAyCTnPXPE?feature=share' },
+  { brand: '메이크프렘', category: '뷰티', href: 'https://youtube.com/shorts/dB8Hm8NW8PM?feature=share' },
+  { brand: '메이크프렘', category: '뷰티', href: 'https://youtube.com/shorts/d4fsyB3Uwts?feature=share' },
+  { brand: '메이크프렘', category: '뷰티', href: 'https://youtube.com/shorts/E8PzxZW85_4?feature=share' },
+  { brand: '오브제', category: '뷰티', href: 'https://youtube.com/shorts/zccdyHLoNgg?feature=share' },
+  { brand: '오브제', category: '뷰티', href: 'https://youtube.com/shorts/2VH1OMpmni4?feature=share' },
+  { brand: '오브제', category: '뷰티', href: 'https://youtube.com/shorts/xin2-TeTb4M?feature=share' },
+  { brand: '풀리', category: '뷰티', href: 'https://youtube.com/shorts/GqqYpZa48oQ?feature=share' },
+  { brand: '센트온', category: '홈프래그런스', href: 'https://youtube.com/shorts/v744ivejfsY?feature=share' },
+  { brand: '센트온', category: '홈프래그런스', href: 'https://youtube.com/shorts/kwLb-8K8kUI?feature=share' },
+  { brand: '센트온', category: '홈프래그런스', href: 'https://youtube.com/shorts/qYe5_mk5sW0?feature=share' },
+  { brand: '동구밭', category: '퍼스널케어', href: 'https://youtube.com/shorts/NXEEbk_4q8s?feature=share' },
+  { brand: '동구밭', category: '퍼스널케어', href: 'https://youtube.com/shorts/i8W6pxKO-2c?feature=share' },
+  { brand: '동구밭', category: '퍼스널케어', href: 'https://youtube.com/shorts/XDcbu5Yrcfk?feature=share' },
+  { brand: '마마포레스트', category: '생활용품', href: 'https://youtube.com/shorts/phLo2giYg2Q?feature=share' },
+  { brand: '부케가르니', category: '뷰티', href: 'https://youtube.com/shorts/W0U0SchriP0?feature=share' },
+  { brand: '부케가르니', category: '뷰티', href: 'https://youtube.com/shorts/sbBjZiMe3P8?feature=share' },
+  { brand: '부케가르니', category: '뷰티', href: 'https://youtube.com/shorts/24v94gSwItM?feature=share' },
+  { brand: '미닉스', category: '가전제품', href: 'https://youtube.com/shorts/SJJhl_31iMo?feature=share' },
+  { brand: '미닉스', category: '가전제품', href: 'https://youtube.com/shorts/Vt1A9TY3GEI?feature=share' },
+  { brand: '미닉스', category: '가전제품', href: 'https://youtube.com/shorts/vHvr3S_TBC4?feature=share' },
+  { brand: '젝시믹스', category: '패션', href: 'https://youtube.com/shorts/Tpo1UJF6I8w?feature=share' },
+  { brand: '젝시믹스', category: '패션', href: 'https://youtube.com/shorts/iseqSz-Q4i0?feature=share' },
+  { brand: '젝시믹스', category: '패션', href: 'https://youtube.com/shorts/JyDd_8UEIQI?feature=share' },
+  { brand: '오니스트', category: '이너뷰티', href: 'https://youtube.com/shorts/rItwevrBTBI?feature=share' },
+  { brand: '플라이밀', category: '다이어트제품', href: 'https://youtube.com/shorts/PP0Y5yH0pbw?feature=share' },
+  { brand: '플라이밀', category: '다이어트제품', href: 'https://youtube.com/shorts/Q7PXiDS_Bug?feature=share' },
+  { brand: '플라이밀', category: '다이어트제품', href: 'https://youtube.com/shorts/Jtv-v4TM7Xw?feature=share' },
+  { brand: '플라이밀', category: '다이어트제품', href: 'https://youtube.com/shorts/O73TIRxTgls?feature=share' },
+  { brand: '플라이밀', category: '다이어트제품', href: 'https://youtube.com/shorts/06okD9qG6Fs?feature=share' },
+  { brand: '젤로젤로', category: '네일아트', href: 'https://youtube.com/shorts/K14OLGDYxes?feature=share' },
+  { brand: '젤로젤로', category: '네일아트', href: 'https://youtube.com/shorts/Kf6uDlp76Mw?feature=share' },
+  { brand: '토코보', category: '뷰티', href: 'https://youtube.com/shorts/HUF20gydKK8?feature=share' },
+  { brand: '토코보', category: '뷰티', href: 'https://youtube.com/shorts/vr_eKzpCfCE?feature=share' },
+  { brand: '라피타', category: '홈케어', href: 'https://youtube.com/shorts/7KEQuR_bKvE?feature=share' },
+  { brand: '라피타', category: '홈케어', href: 'https://youtube.com/shorts/pcibnBuuCOY?feature=share' },
+  { brand: '렌트리', category: '가전렌탈', href: 'https://youtube.com/shorts/pc7-Mx60OiI?feature=share' },
+  { brand: '렌트리', category: '가전렌탈', href: 'https://youtube.com/shorts/PnGL-dZMKO0?feature=share' },
+  { brand: '테디스베이글', category: '베이커리', href: 'https://youtube.com/shorts/IEe0q_4bW1E?feature=share' },
+  { brand: '테디스베이글', category: '베이커리', href: 'https://youtube.com/shorts/ATu4XTdnuhI?feature=share' },
+  { brand: '테디스베이글', category: '베이커리', href: 'https://youtube.com/shorts/MG0TfUU4Z58?feature=share' },
 ];
+
+function shuffle(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
 
 function extractYoutubeId(url) {
   const match = url.match(/shorts\/([^?]+)/);
   return match ? match[1] : '';
 }
 
-const cards = rawEntries.map((entry, idx) => {
+const cards = shuffle(rawEntries).map((entry, idx) => {
   const videoId = extractYoutubeId(entry.href);
   return {
     key: idx,
@@ -41,7 +101,7 @@ const cards = rawEntries.map((entry, idx) => {
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-6xl px-4 pb-24 pt-32 sm:px-6 sm:pt-40 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
         <header className="mb-24 text-center">
           <img
             src={logoUrl}
@@ -64,7 +124,7 @@ function App() {
           </div>
         </main>
 
-        <section className="mx-auto max-w-xl px-4 py-20 text-center">
+        <section className="mx-auto mt-20 max-w-xl px-4 text-center">
           <h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
             더 많은 마케팅 사례가 궁금하신가요?
           </h2>
