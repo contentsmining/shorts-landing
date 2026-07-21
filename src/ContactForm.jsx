@@ -193,7 +193,7 @@ function ContactForm() {
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="mx-auto mt-6 flex w-fit items-center justify-center gap-2 rounded-full bg-[#FF6019] px-10 py-4 text-base font-bold text-white transition-colors hover:bg-sky-100 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
+            className="mx-auto mt-6 flex w-fit items-center justify-center gap-2 rounded-full bg-[#FF6019] px-10 py-4 text-base font-bold text-white transition-colors hover:bg-purple-200 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === 'sending' ? '전송 중...' : '프로젝트 문의보내기'}
             <span aria-hidden="true">→</span>
